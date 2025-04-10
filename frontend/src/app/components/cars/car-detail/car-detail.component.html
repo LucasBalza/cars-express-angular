@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="card-header border-0 bg-white py-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="page-title mb-0">Détails de la voiture</h2>
+        <button class="btn btn-outline-primary rounded-pill px-4" routerLink="/cars">
+          <i class="bi bi-arrow-left me-2"></i>Retour à la liste
+        </button>
+      </div>
+    </div>
+
+    <div class="text-center my-5" *ngIf="loading">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+    </div>
+
+    <div class="alert alert-danger mx-4 mb-4 rounded-3 shadow-sm" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <div class="card-body p-4" *ngIf="car && !loading">
+      <div class="row mb-5">
+        <div class="col-md-6">
+          <div class="car-header">
+            <h3 class="car-title">{{ car.brand }} {{ car.model }}</h3>
+            <div class="car-year">Année {{ car.year }}</div>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="car-price">{{ car.price | currency:'EUR' }}</div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="detail-section">
+            <h4 class="section-title">
+              <i class="bi bi-info-circle me-2"></i>Caractéristiques
+            </h4>
+            <div class="detail-list">
+              <div class="detail-item">
+                <span class="detail-label">Marque</span>
+                <span class="detail-value">{{ car.brand }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Modèle</span>
+                <span class="detail-value">{{ car.model }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Année</span>
+                <span class="detail-value">{{ car.year }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Couleur</span>
+                <span class="detail-value">{{ car.color }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-section">
+            <h4 class="section-title">
+              <i class="bi bi-clock-history me-2"></i>Informations
+            </h4>
+            <div class="detail-list">
+              <div class="detail-item">
+                <span class="detail-label">Créé le</span>
+                <span class="detail-value">{{ car.createdAt | date:'dd/MM/yyyy' }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Dernière mise à jour</span>
+                <span class="detail-value">{{ car.updatedAt | date:'dd/MM/yyyy' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end mt-5" *ngIf="isAdmin">
+        <button class="btn btn-outline-warning rounded-pill px-4 me-2" (click)="onEdit()">
+          <i class="bi bi-pencil me-2"></i>Modifier
+        </button>
+        <button class="btn btn-outline-danger rounded-pill px-4" (click)="onDelete()">
+          <i class="bi bi-trash me-2"></i>Supprimer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

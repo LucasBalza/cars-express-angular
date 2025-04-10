@@ -1,0 +1,64 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="page-title mb-4">Liste des Voitures</h1>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="row justify-content-center">
+    <div class="col-auto">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="row g-4">
+    <div *ngFor="let car of cars" class="col-md-6 col-lg-4">
+      <div class="card hover-card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ car.brand }} {{ car.model }}</h5>
+          <div class="card-info">
+            <p class="info-item">
+              <i class="bi bi-calendar me-2"></i>
+              {{ car.year }}
+            </p>
+            <p class="info-item">
+              <i class="bi bi-palette me-2"></i>
+              {{ car.color }}
+            </p>
+            <p class="info-item">
+              <i class="bi bi-currency-euro me-2"></i>
+              {{ car.price | currency:'EUR':'symbol':'1.0-0' }}
+            </p>
+          </div>
+        </div>
+        <div class="card-footer bg-transparent border-0 d-flex justify-content-between gap-2">
+          <div class="d-flex gap-2">
+            <button [routerLink]="['/cars', car.id]" class="btn btn-outline-info">
+              <i class="bi bi-eye me-1"></i> Détails
+            </button>
+            <ng-container *ngIf="isAdmin">
+              <button [routerLink]="['/cars', car.id, 'edit']" class="btn btn-outline-warning">
+                <i class="bi bi-pencil me-1"></i> Modifier
+              </button>
+              <button (click)="onDelete(car, $event)" class="btn btn-outline-danger">
+                <i class="bi bi-trash me-1"></i> Supprimer
+              </button>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !error && cars.length === 0" class="row">
+    <div class="col-12 text-center empty-state">
+      <p>Aucune voiture disponible.</p>
+    </div>
+  </div>
+</div>

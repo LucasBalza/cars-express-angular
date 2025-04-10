@@ -1,0 +1,102 @@
+.page-title {
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1) !important;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+  }
+
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .card-footer {
+    background: transparent;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding: 1rem;
+    position: relative;
+  }
+
+  .btn {
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .btn-outline-info {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    background-color: white;
+  }
+
+  .btn-outline-info:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+  }
+
+  .btn-outline-warning {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    background-color: white;
+  }
+
+  .btn-outline-warning:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+  }
+
+  .btn-outline-danger {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background-color: white;
+  }
+
+  .btn-outline-danger:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+  }
+
+  .empty-state {
+    padding: 3rem;
+    color: var(--text-color);
+  }
+
+  .spinner-border {
+    color: var(--primary-color) !important;
+  }
