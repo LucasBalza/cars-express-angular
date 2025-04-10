@@ -8,13 +8,13 @@ applications:
             - nvm install 20.11.1
             - nvm use 20.11.1
             - npm install -g @angular/cli
-            - export PATH=$PATH:$(npm bin -g)
-            - echo "PATH: $PATH"
+            - 'export PATH=$PATH:$(npm bin -g)'
+            - 'echo "PATH: $PATH"'
             - which ng
             - npm install
         build:
           commands:
-            - $(npm bin -g)/ng build
+            - '$(npm bin -g)/ng build'
       artifacts:
         baseDirectory: dist/frontend/browser
         files:
